@@ -17,6 +17,7 @@ import {
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import { compose } from 'redux';
 import { connect } from 'react-redux';
+import { withRouter } from 'react-router';
 import { createStructuredSelector } from 'reselect';
 import * as Actions from '../../App/actions';
 
@@ -58,16 +59,26 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-const LoginForm = ({ loginAction }) => {
+const LoginForm = props => {
   const classes = useStyles();
 
+  const { loginAction } = props;
+
   const [values, setValues] = React.useState({
-    email: '',
+    username: '',
     password: '',
   });
 
   const handleChange = name => event => {
     setValues({ ...values, [name]: event.target.value });
+  };
+
+  const handleClick = data => {
+    if (data.username === 'demo' && data.password === 'demo') {
+      props.history.push('/dashboard');
+    } else {
+      props.history.push('/login');
+    }
   };
 
   const canBeSubmitted = () => {
@@ -92,13 +103,12 @@ const LoginForm = ({ loginAction }) => {
           margin="normal"
           required
           fullWidth
-          id="email"
-          label="Email Address"
-          name="email"
-          value={values.email}
-          autoComplete="email"
+          id="username"
+          label="username"
+          name="username"
+          value={values.username}
           autoFocus
-          onChange={handleChange('email')}
+          onChange={handleChange('username')}
         />
         <TextField
           variant="outlined"
@@ -124,7 +134,8 @@ const LoginForm = ({ loginAction }) => {
           color="primary"
           className={classes.submit}
           onClick={() => {
-            loginAction(values);
+            // loginAction(values);
+            handleClick(values);
           }}
           disabled={!canBeSubmitted}
         >
@@ -171,6 +182,7 @@ const withConnect = connect(
 );
 
 export default compose(
+  withRouter,
   withConnect,
   memo,
 )(LoginForm);
