@@ -1,3 +1,7 @@
+const headers = new Headers();
+
+headers.append('Authorization', `Basic ${btoa(`${'demo'}:${'demo'}`)}`);
 module.exports = {
-  BaseUrl: 'http://127.0.0.1:9080',
+  BaseUrl: 'https://opensky-network.org/api',
+  // BaseUrl: `https://demo:demo@opensky-network.org/api, {headers: ${headers}}`,
 };

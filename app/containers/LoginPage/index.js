@@ -28,12 +28,12 @@ export function LoginPage({ tokens }) {
 
   // const [isLoggedIn, setLoggedIn] = useState(false);
 
-  const { setAuthTokens } = useAuth();
+  // const { setAuthTokens } = useAuth();
 
-  if (tokens) {
-    setAuthTokens(tokens);
-    return <Redirect to="/dashboard" />;
-  }
+  // if (tokens) {
+  //   setAuthTokens(tokens);
+  //   return <Redirect to="/dashboard" />;
+  // }
 
   return (
     <div>

@@ -81,12 +81,6 @@ const LoginForm = props => {
     }
   };
 
-  const canBeSubmitted = () => {
-    const { email, password } = values;
-    return !email.length && !password.length;
-    // return email !== null && password !== null;
-  };
-
   return (
     <Container component="main" maxWidth="xs">
       <CssBaseline />
@@ -137,7 +131,6 @@ const LoginForm = props => {
             // loginAction(values);
             handleClick(values);
           }}
-          disabled={!canBeSubmitted}
         >
           Sign In
         </Button>

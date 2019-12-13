@@ -29,7 +29,6 @@ import AccountCircle from '@material-ui/icons/AccountCircle';
 import NotificationsIcon from '@material-ui/icons/Notifications';
 import MoreIcon from '@material-ui/icons/MoreVert';
 
-
 import Footer from '../../Footer';
 import { useAuth } from '../../../containers/context/AppContext';
 
@@ -158,11 +157,7 @@ const Layout1 = props => {
     setAuthTokens();
   }
 
-  const navigation = [
-    { id: 1, name: 'dashboard', link: '/dashboard' },
-    { id: 2, name: 'post', link: '/posts' },
-    // { id: 3, name: 'Admins', link: '/admins' },
-  ];
+  const navigation = [{ id: 1, name: 'dashboard', link: '/dashboard' }];
 
   const menuId = 'primary-search-account-menu';
   const renderMenu = (
@@ -322,16 +317,6 @@ const Layout1 = props => {
           ))}
         </List>
         <Divider />
-        <List>
-          {['All mail', 'Trash', 'Spam'].map((text, index) => (
-            <ListItem button key={text}>
-              <ListItemIcon>
-                {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-              </ListItemIcon>
-              <ListItemText primary={text} />
-            </ListItem>
-          ))}
-        </List>
       </Drawer>
 
       <Grid container className={classes.root}>
