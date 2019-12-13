@@ -14,7 +14,7 @@ import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import { ConnectedRouter } from 'connected-react-router';
 import FontFaceObserver from 'fontfaceobserver';
-import history from 'utils/history';
+import history from './utils/history';
 import 'sanitize.css/sanitize.css';
 
 // Import root app
@@ -46,8 +46,6 @@ const initialState = {};
 const store = configureStore(initialState, history);
 const MOUNT_NODE = document.getElementById('app');
 
-console.log(store, 'store');
-
 const render = messages => {
   ReactDOM.render(
     <Provider store={store}>
@@ -65,7 +63,7 @@ if (module.hot) {
   // Hot reloadable React components and translation json files
   // modules.hot.accept does not accept dynamic dependencies,
   // have to be constants at compile-time
-  module.hot.accept(['./i18n', 'containers/App'], () => {
+  module.hot.accept(['./i18n', './containers/App'], () => {
     ReactDOM.unmountComponentAtNode(MOUNT_NODE);
     render(translationMessages);
   });
